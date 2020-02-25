@@ -1,24 +1,26 @@
 import React from "react";
-const Sidebar = () => {
+import s from './style.module.css';
+
+const Navbar = () => {
     return (
-        <nav className='sidebar'>
+        <nav className={s.sidebar}>
             <div>
-                <a>Profile</a>
+                <a href="#1">Profile</a>
             </div>
             <div>
-                <a>Messages</a>
+                <a href="#2">Messages</a>
             </div>
             <div>
-                <a>News</a>
+                <a href="#3">News</a>
             </div>
             <div>
-                <a>Musik</a>
+                <a href="#4">Musik</a>
             </div>
             <div>
-                <a>Settings</a>
+                <a href="#5">Settings</a>
             </div>
         </nav>
     );
 };
 
-export default Sidebar;
+export default Navbar;
