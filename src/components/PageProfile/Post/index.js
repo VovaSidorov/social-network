@@ -1,11 +1,11 @@
 import React from 'react';
 import s from './style.module.css';
 
-const Post = () => {
+const Post = ({message}) => {
   return (
     <div className={s.item}>
       <img src='https://movies4maniacs.liberty.me/wp-content/uploads/sites/1218/2015/09/avatarsucks.jpg' />
-        post 1
+      {message}
           <div>
             <span>like</span>
           </div>

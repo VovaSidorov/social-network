@@ -1,8 +1,5 @@
-.content {
-    grid-area: content;
-    background-color: darkgray;
-}
-.content img{
+
+.content img {
     width: 1200px;
     align-items: center;
 }
