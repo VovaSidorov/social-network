@@ -3,11 +3,11 @@ import s from './style.module.css';
 import MyPosts from "./MyPosts";
 import ProfileInfo from "./ProfileInfo";
 
-const PageProfile = () => {
+const PageProfile = ({postData}) => {
     return (
         <div>
                <ProfileInfo/>
-                <MyPosts/>
+                <MyPosts postData={postData}/>
         </div>
     );
 };

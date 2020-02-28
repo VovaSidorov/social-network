@@ -5,7 +5,7 @@ const ProfileInfo = () => {
     return (
         <div>
             <div>
-                <img src='https://linguist.lviv.ua/wp-content/uploads/2015/02/image.png' alt="sdfdsfs"/>
+                <img src='https://miro.medium.com/max/796/0*zyCI97lw5e_a7-sP.jpg' alt="sdfdsfs"/>
             </div>
             <div className={s.descriptionBlock}>
                 AVA
