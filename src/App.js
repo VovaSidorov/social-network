@@ -6,10 +6,8 @@ import PageProfile from "./components/PageProfile";
 import Dialog from "./components/Dialog";
 import { BrowserRouter, Route } from "react-router-dom";
 
-function App({dialogsData,massegesData,postData}) {
-    console.log(dialogsData);
-    console.log(massegesData);
-    console.log(postData);
+function App(props) {
+
     return (
         <BrowserRouter>
         <div className='app-wrapper'>
@@ -17,8 +15,10 @@ function App({dialogsData,massegesData,postData}) {
             <Navbar/>
            
             <div className='app-wrapper-content'>
-                <Route path="/profile" render={()=><PageProfile postData={postData}/>}/>
-                <Route path="/messages" render={()=><Dialog dialogsData={dialogsData} massegesData={massegesData}/>}/>
+                <Route path="/profile" 
+                render={()=><PageProfile postData={props.state.profilePage.posts}/>}/>
+                <Route path="/messages" 
+                render={()=><Dialog dialogsData={props.state.dialogsPage.dialogs} massegesData={props.state.dialogsPage.messages}/>}/>
             </div>
         </div>
         </BrowserRouter>
