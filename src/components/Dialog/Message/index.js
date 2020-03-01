@@ -1,8 +1,12 @@
 import React from 'react';
-import s from './../style.module.css';
+import Grid from '@material-ui/core/Grid';
 
 const MessageItem = (props) => {
-    return <div className={s.dialog}>{props.message}</div>
+    return (
+        <Grid item xs={6}>
+        {props.message}
+        </Grid>
+    )
 }
 
 export default MessageItem; 

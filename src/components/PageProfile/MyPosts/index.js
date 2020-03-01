@@ -1,27 +1,27 @@
 import React from 'react';
-import s from './style.module.css';
 import Post from '../Post';
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 const MyPosts = ({postData}) => {
 
-    let postElement = postData.map(post=><Post message={post.message} likesCount={post.likesCount}/>)
+    let postElement = postData.map(post => <Post message={post.message} likesCount={post.likesCount}/>)
     return (
-        <div className={s.postsBlock}>
-            <h3>My posts</h3>
-            <div>
-                <div>
-                    <textarea></textarea>
-                </div>
-                <div>
-                    <button>Add post</button>
-                </div>
-            </div>
-            <div className={s.posts}>
+        <React.Fragment>
+            <Grid item xs={12}>
+                <form noValidate autoComplete="off">
+                    <TextField id="outlined-basic" label="Outlined" variant="outlined"/>
+                    <Button variant="contained" color="primary">
+                        Primary
+                    </Button>
+                </form>
+            </Grid>
+            <Grid item xs={12}>
                 {postElement}
-            </div>
-        </div>
+            </Grid>
+        </React.Fragment>
     )
-
 }
 
 export default MyPosts;

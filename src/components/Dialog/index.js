@@ -1,11 +1,23 @@
 import React from 'react';
-import s from './style.module.css';
 import DialogItem from "./DialogItem";
 import MessageItem from "./Message";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import {makeStyles} from "@material-ui/core/styles";
+
+const useStyles = makeStyles(theme => ({
+    paper: {
+        padding: theme.spacing(2),
+        // textAlign: 'center',
+        color: theme.palette.text.secondary,
+        marginTop: theme.spacing(2),
+        textAlign: "justify"
+    }
+}));
 
 
 const Dialog = ({dialogsData,massegesData}) => {
-
+    const classes = useStyles();
 
     let dialogsElements = dialogsData
         .map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
@@ -14,14 +26,16 @@ const Dialog = ({dialogsData,massegesData}) => {
         .map(message => <MessageItem message={message.message}/>);
 
     return (
-        <div className={s.dialogs}>
-            <div className={s.dialogsItems}>
-                {dialogsElements}
-            </div>
-            <div className={s.messages}>
-                {messageElements}
-            </div>
-        </div>
+        <Paper className={classes.paper}>
+            <Grid container spacing={3}>
+                <Grid item xs={6}>
+                    {dialogsElements}
+                </Grid>
+                <Grid item xs={6}>
+                    {messageElements}
+                </Grid>
+            </Grid>
+        </Paper>
     )
 
 };

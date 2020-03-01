@@ -1,15 +1,15 @@
 import React from 'react';
-import s from './style.module.css';
+import Avatar from "@material-ui/core/Avatar";
+
 
 const Post = (props) => {
     return (
-        <div className={s.item}>
-            <img src='https://movies4maniacs.liberty.me/wp-content/uploads/sites/1218/2015/09/avatarsucks.jpg'/>
-            {props.message}
-            <div>
-                <span>{props.likesCount}</span>
-            </div>
-        </div>
+        <React.Fragment>
+            <Avatar alt="Cindy Baker"
+                    src="https://crestedcranesolutions.com/wp-content/uploads/2013/07/facebook-profile-picture-no-pic-avatar.jpg"/>
+            <span>{props.message}</span>
+            <span>likes {props.likesCount}</span>
+        </React.Fragment>
     )
 
 }
