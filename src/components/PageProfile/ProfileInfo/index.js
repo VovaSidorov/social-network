@@ -16,7 +16,7 @@ const ProfileInfo = () => {
     const classes = useStyles();
     return (
         <React.Fragment>
-            <Grid item xs={12}>*/}
+            <Grid item xs={12}>
                 <img
                     src='https://www.makecovers.com/wp-content/uploads/2015/01/Pursuit-of-Happiness-Facebook-Covers.png'
                     alt="sdfdsfs"/>

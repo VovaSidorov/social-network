@@ -15,11 +15,18 @@ const useStyles = makeStyles(theme => ({
         textAlign: "justify"
     },
     buttonMenu: {
-        width: "255px"
+        width: "255px",
+        backgroundColor: "steelblue",
+        color: "black"
     },
     activeLink:{
-        color: "gold"
-}
+        color: "gold",
+        textDecoration: "none"
+},
+    link:{
+        color: "black",
+        textDecoration: "none"
+    }
 }));
 
 const Navbar = () => {
@@ -33,10 +40,10 @@ const Navbar = () => {
                     aria-label="vertical outlined primary button group"
                 >
                     <Button className={classes.buttonMenu}><NavLink to="/profile" activeClassName={classes.activeLink}>Profile</NavLink></Button>
-                    <Button className={classes.buttonMenu}><NavLink to="/messages" activeClassName={classes.activeLink}>Messages</NavLink></Button>
-                    <Button className={classes.buttonMenu}><a href="#3">News</a></Button>
-                    <Button className={classes.buttonMenu}><a href="#4">Musik</a></Button>
-                    <Button className={classes.buttonMenu}><a href="#5">Settings</a></Button>
+                    <Button className={classes.buttonMenu}><NavLink to="/messages"   activeClassName={classes.activeLink}>Messages</NavLink></Button>
+                    <Button className={classes.buttonMenu}><a className={classes.link} href="#3">News</a></Button>
+                    <Button className={classes.buttonMenu}><a className={classes.link} href="#4">Musik</a></Button>
+                    <Button className={classes.buttonMenu}><a className={classes.link} href="#5">Settings</a></Button>
                 </ButtonGroup>
             </Paper>
         </Grid>
