@@ -15,12 +15,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const PageProfile = ({postData}) => {
+const PageProfile = ({postData,addPost}) => {
     const classes = useStyles();
     return (
         <Paper className={classes.paper}>
             <ProfileInfo/>
-            <MyPosts postData={postData}/>
+            <MyPosts postData={postData} addPost={addPost}/>
         </Paper>
     );
 };
