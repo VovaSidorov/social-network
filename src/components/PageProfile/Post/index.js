@@ -17,7 +17,7 @@ const Post = (props) => {
             <Avatar  className={classes.large} alt="Cindy Baker"
                     src="https://crestedcranesolutions.com/wp-content/uploads/2013/07/facebook-profile-picture-no-pic-avatar.jpg"/>
             <span>{props.message}</span>
-            <span>likes {props.likesCount}</span>
+            <span>   likes   </span>{props.likesCount}
         </React.Fragment>
     )
 

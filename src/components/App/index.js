@@ -1,9 +1,9 @@
-import React from 'react';
+ import React from 'react';
 import Header from "./../Header";
 import Navbar from "./../Navbar";
 import PageProfile from "./../PageProfile";
 import Dialog from "./../Dialog";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 function App(props) {
 
     return (
-        <BrowserRouter>
+
             <Container maxWidth="lg">
                 <Header/>
                 <Grid container spacing={3}>
@@ -25,7 +25,7 @@ function App(props) {
                     </Grid>
                 </Grid>
             </Container>
-        </BrowserRouter>
+
     );
 }
 

@@ -4,6 +4,7 @@ import MessageItem from "./Message";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -25,6 +26,12 @@ const Dialog = ({dialogsData,massegesData}) => {
     let messageElements = massegesData
         .map(message => <MessageItem message={message.message}/>);
 
+    let newPostElement = React.createRef();
+    let addPost=()=>{
+        let text = newPostElement.current.value;
+        alert(text);
+    };
+
     return (
         <Paper className={classes.paper}>
             <Grid container spacing={3}>
@@ -33,6 +40,10 @@ const Dialog = ({dialogsData,massegesData}) => {
                 </Grid>
                 <Grid item xs={6}>
                     {messageElements}
+                    <textarea  className={classes.textField} ref={newPostElement}></textarea>
+                    <Button onClick={addPost} variant="contained" color="primary"  className={classes.textField}>
+                        New message
+                    </Button>
                 </Grid>
             </Grid>
         </Paper>

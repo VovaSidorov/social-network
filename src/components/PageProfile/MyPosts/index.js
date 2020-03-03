@@ -20,14 +20,20 @@ const useStyles = makeStyles(theme => ({
 const MyPosts = ({postData}) => {
 
     const classes = useStyles();
-    let postElement = postData.map(post => <Post message={post.message} likesCount={post.likesCount} />)
+    let postElement = postData.map(post => <Post message={post.message} likesCount={post.likesCount} />);
+    let newPostElement = React.createRef();
+    let addPost=()=>{
+        let text = newPostElement.current.value;
+        alert(text);
+    };
     return (
         <React.Fragment>
             <Grid item xs={12}>
                 <form noValidate autoComplete="off">
-                    <TextField id="outlined-basic" label="Outlined" variant="outlined"  className={classes.textField}/>
-                    <Button variant="contained" color="primary"  className={classes.textField}>
-                        Primary
+                    {/*<TextField ref={newPostElement} id="outlined-basic" label="Outlined" variant="outlined"  className={classes.textField} value="asdasdasdasd"/>*/}
+                    <textarea  className={classes.textField} ref={newPostElement}></textarea>
+                    <Button onClick={addPost} variant="contained" color="primary"  className={classes.textField}>
+                        Add post
                     </Button>
                 </form>
             </Grid>
