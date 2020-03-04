@@ -15,12 +15,15 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const PageProfile = ({postData,addPost}) => {
+const PageProfile = (props) => {
     const classes = useStyles();
     return (
         <Paper className={classes.paper}>
             <ProfileInfo/>
-            <MyPosts postData={postData} addPost={addPost}/>
+            <MyPosts posts={props.profilePage.posts}
+            newPostText={props.profilePage.newPostText}
+            updateNewPost={props.updateNewPost}
+            addPost={props.addPost}/>
         </Paper>
     );
 };

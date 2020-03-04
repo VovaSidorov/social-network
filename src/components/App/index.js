@@ -18,8 +18,9 @@ function App(props) {
                     <Navbar/>
                     <Grid item xs={9}>
                         <Route path="/profile"
-                               render={() => <PageProfile postData={props.state.profilePage.posts}
-                               addPost={props.state.profilePage.newPostText}/>}/>
+                               render={() => <PageProfile profilePage={props.state.profilePage}
+                               addPost={props.addPost}
+                               updateNewPost={props.updateNewPost}/>}/>
                         <Route path="/messages"
                                render={() => <Dialog dialogsData={props.state.dialogsPage.dialogs}
                                                      massegesData={props.state.dialogsPage.messages}/>}/>
