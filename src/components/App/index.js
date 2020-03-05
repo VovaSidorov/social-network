@@ -19,8 +19,7 @@ function App(props) {
                     <Grid item xs={9}>
                         <Route path="/profile"
                                render={() => <PageProfile profilePage={props.state.profilePage}
-                               addPost={props.addPost}
-                               updateNewPost={props.updateNewPost}/>}/>
+                               dispatch={props.dispatch}/>}/>
                         <Route path="/messages"
                                render={() => <Dialog dialogsData={props.state.dialogsPage.dialogs}
                                                      massegesData={props.state.dialogsPage.messages}/>}/>

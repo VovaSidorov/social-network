@@ -23,7 +23,7 @@ const PageProfile = (props) => {
             <MyPosts posts={props.profilePage.posts}
             newPostText={props.profilePage.newPostText}
             updateNewPost={props.updateNewPost}
-            addPost={props.addPost}/>
+            dispatch={props.dispatch}/>
         </Paper>
     );
 };
