@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/state";
 
 const useStyles = makeStyles(theme => ({
     large: {
@@ -16,7 +17,6 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-
 const MyPosts = (props) => {
 
     const classes = useStyles();
@@ -26,11 +26,11 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
     let addPost = () => {
         debugger;
-        props.dispatch({type:'ADD-POST'});
+        props.dispatch(addPostActionCreator());
     }
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch({type:'UPDATE-NEW-POST-TEXT', newText: text});
+        props.dispatch(updateNewPostTextActionCreator(text));
     }
     return (
         <React.Fragment>
