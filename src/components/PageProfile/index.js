@@ -21,8 +21,8 @@ const PageProfile = (props) => {
         <Paper className={classes.paper}>
             <ProfileInfo/>
             <MyPosts posts={props.profilePage.posts}
-            newPostText={props.profilePage.newPostText}
-            updateNewPost={props.updateNewPost}
+            // newPostText={props.profilePage.newPostText}
+            // updateNewPost={props.updateNewPost}
             dispatch={props.dispatch}/>
         </Paper>
     );

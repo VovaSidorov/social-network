@@ -25,7 +25,6 @@ const MyPosts = (props) => {
         props.posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>);
     let newPostElement = React.createRef();
     let addPost = () => {
-        debugger;
         props.dispatch(addPostActionCreator());
     }
     let onPostChange = () => {
@@ -36,7 +35,8 @@ const MyPosts = (props) => {
         <React.Fragment>
             <Grid item xs={12}>
                 <form noValidate autoComplete="off">
-                    {/*<TextField ref={newPostElement} id="outlined-basic" label="Outlined" variant="outlined"  className={classes.textField} value="asdasdasdasd"/>*/}
+                    {/* <TextField onChange={onPostChange} ref={newPostElement} id="outlined-basic" label="2" variant="1" 
+                     className={classes.textField} defaultValue={props.newPostText}/> */}
                     <textarea onChange={onPostChange} className={classes.textField} ref={newPostElement}
                               value={props.newPostText} />
                     <Button  onClick={ addPost } variant="contained" color="primary"  className={classes.textField}>

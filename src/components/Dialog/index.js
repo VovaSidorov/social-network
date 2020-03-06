@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import {updateNewMessageBodyCreator,sendMessageCreator} from './../../redux/state';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -17,19 +18,27 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const Dialog = ({dialogsData,massegesData}) => {
+const Dialog = (props) => {
+  
     const classes = useStyles();
 
-    let dialogsElements = dialogsData
+    let state = props.store.getState().dialogsPage;
+    console.log(state);
+
+    let dialogsElements = state.dialogs
         .map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
 
-    let messageElements = massegesData
+    let messageElements = state.messages
         .map(message => <MessageItem message={message.message}/>);
+    let newMessageBody = state.newMessageBody;
 
-    let newPostElement = React.createRef();
-    let addPost=()=>{
-        let text = newPostElement.current.value;
-        alert(text);
+    let onSendMessageClick=()=>{
+        props.store.dispatch(sendMessageCreator());
+    };
+    let onNewMessageChange=(e)=>{
+        let body = e.target.value;
+        console.log(body);
+        props.store.dispatch(updateNewMessageBodyCreator(body));
     };
 
     return (
@@ -39,9 +48,11 @@ const Dialog = ({dialogsData,massegesData}) => {
                     {dialogsElements}
                 </Grid>
                 <Grid item xs={6}>
-                    {messageElements}
-                    <textarea  className={classes.textField} ref={newPostElement}></textarea>
-                    <Button onClick={addPost} variant="contained" color="primary"  className={classes.textField}>
+                    <div>{messageElements}</div>
+                    <textarea  onChange={onNewMessageChange} 
+                    value={newMessageBody}
+                    className={classes.textField}></textarea>
+                    <Button onClick={onSendMessageClick} variant="contained" color="primary"  className={classes.textField}>
                         New message
                     </Button>
                 </Grid>

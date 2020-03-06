@@ -21,8 +21,7 @@ function App(props) {
                                render={() => <PageProfile profilePage={props.state.profilePage}
                                dispatch={props.dispatch}/>}/>
                         <Route path="/messages"
-                               render={() => <Dialog dialogsData={props.state.dialogsPage.dialogs}
-                                                     massegesData={props.state.dialogsPage.messages}/>}/>
+                               render={() => <Dialog store={props.store}/>}/>
                     </Grid>
                 </Grid>
             </Container>
