@@ -23,14 +23,16 @@ const MyPosts = (props) => {
 
     let postsElements =
         props.posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>);
+
     let newPostElement = React.createRef();
-    let addPost = () => {
-        props.dispatch(addPostActionCreator());
-    }
+
+    let onAddPost = () => {
+        props.addPost();
+    };
     let onPostChange = () => {
         let text = newPostElement.current.value;
-        props.dispatch(updateNewPostTextActionCreator(text));
-    }
+        props.updateNewPostText(text);
+    };
     return (
         <React.Fragment>
             <Grid item xs={12}>
@@ -39,7 +41,7 @@ const MyPosts = (props) => {
                      className={classes.textField} defaultValue={props.newPostText}/> */}
                     <textarea onChange={onPostChange} className={classes.textField} ref={newPostElement}
                               value={props.newPostText} />
-                    <Button  onClick={ addPost } variant="contained" color="primary"  className={classes.textField}>
+                    <Button  onClick={ onAddPost } variant="contained" color="primary"  className={classes.textField}>
                         Add post
                     </Button>
                 </form>

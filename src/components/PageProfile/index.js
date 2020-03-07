@@ -1,8 +1,8 @@
 import React from "react";
-import MyPosts from "./MyPosts";
 import ProfileInfo from "./ProfileInfo";
 import Paper from '@material-ui/core/Paper';
 import {makeStyles} from '@material-ui/core/styles';
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const useStyles = makeStyles(theme => ({
 
@@ -20,10 +20,7 @@ const PageProfile = (props) => {
     return (
         <Paper className={classes.paper}>
             <ProfileInfo/>
-            <MyPosts posts={props.profilePage.posts}
-            // newPostText={props.profilePage.newPostText}
-            // updateNewPost={props.updateNewPost}
-            dispatch={props.dispatch}/>
+            <MyPostsContainer store={props.store}/>
         </Paper>
     );
 };

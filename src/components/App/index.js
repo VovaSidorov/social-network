@@ -2,7 +2,7 @@
 import Header from "./../Header";
 import Navbar from "./../Navbar";
 import PageProfile from "./../PageProfile";
-import Dialog from "./../Dialog";
+import DialogsContainer from "../Dialog/DialogsContainer";
 import {Route} from "react-router-dom";
 
 import Container from '@material-ui/core/Container';
@@ -17,10 +17,9 @@ function App(props) {
                     <Navbar/>
                     <Grid item xs={9}>
                         <Route path="/profile"
-                               render={() => <PageProfile profilePage={props.state.profilePage}
-                               dispatch={props.dispatch}/>}/>
+                               render={() => <PageProfile store={props.store}/>}/>
                         <Route path="/messages"
-                               render={() => <Dialog store={props.store}/>}/>
+                               render={() => <DialogsContainer store={props.store}/>}/>
                     </Grid>
                 </Grid>
             </Container>
