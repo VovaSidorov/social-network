@@ -7,22 +7,28 @@ import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import {updateNewMessageBodyCreator, sendMessageCreator} from './../../redux/dialogsReducer';
 import Dialog from "./Dialogs";
+import StoreContext from "../../StoreContext";
 
 const DialogContainer = (props) => {
 
-    let state = props.store.getState().dialogsPage;
 
-    let onSendMessageClick = () => {
-        props.store.dispatch(sendMessageCreator());
-    };
-    let onNewMessageChange = (body) => {
-        props.store.dispatch(updateNewMessageBodyCreator(body));
-    };
+    return <StoreContext.Consumer>
+        {(store) => {
+            let state = store.getState().dialogsPage;
 
-    return (
-        <Dialog updateNewMessageBody={onNewMessageChange} sendMessage={onSendMessageClick}
-        dialogsPage={state}/>
-    )
+            let onSendMessageClick = () => {
+                store.dispatch(sendMessageCreator());
+            };
+            let onNewMessageChange = (body) => {
+                store.dispatch(updateNewMessageBodyCreator(body));
+            };
+            return <Dialog updateNewMessageBody={onNewMessageChange}
+                           sendMessage={onSendMessageClick}
+                           dialogsPage={state}/>
+        }
+    }
+
+    </StoreContext.Consumer>
 };
 
 export default DialogContainer;

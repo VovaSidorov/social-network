@@ -20,7 +20,7 @@ const PageProfile = (props) => {
     return (
         <Paper className={classes.paper}>
             <ProfileInfo/>
-            <MyPostsContainer store={props.store}/>
+            <MyPostsContainer/>
         </Paper>
     );
 };

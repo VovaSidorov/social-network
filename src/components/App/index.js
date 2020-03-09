@@ -17,9 +17,9 @@ function App(props) {
                     <Navbar/>
                     <Grid item xs={9}>
                         <Route path="/profile"
-                               render={() => <PageProfile store={props.store}/>}/>
+                               render={() => <PageProfile/>}/>
                         <Route path="/messages"
-                               render={() => <DialogsContainer store={props.store}/>}/>
+                               render={() => <DialogsContainer/>}/>
                     </Grid>
                 </Grid>
             </Container>
