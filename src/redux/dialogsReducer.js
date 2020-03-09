@@ -16,7 +16,7 @@ let initialState = {
         {id: 5, message: "Hi"}
     ],
     newMessageBody:''
-}
+};
 
 const dialogReducer = (state=initialState,action)=>{
     switch (action.type) {
@@ -31,12 +31,10 @@ const dialogReducer = (state=initialState,action)=>{
         default:
             return state;
     }
-
 };
 
 export const sendMessageCreator = ()=>({  type: SEND_MESSAGE});
 export const updateNewMessageBodyCreator = (body)=>{
-    console.log('sdfds',body);
     return {
         type:UPDATE_NEW_MESSAGE_BODY, body: body
     }
