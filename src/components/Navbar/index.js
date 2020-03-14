@@ -41,6 +41,7 @@ const Navbar = () => {
                 >
                     <Button className={classes.buttonMenu}><NavLink to="/profile" activeClassName={classes.activeLink}>Profile</NavLink></Button>
                     <Button className={classes.buttonMenu}><NavLink to="/messages"   activeClassName={classes.activeLink}>Messages</NavLink></Button>
+                    <Button className={classes.buttonMenu}><NavLink to="/users"   activeClassName={classes.activeLink}>Users</NavLink></Button>
                     <Button className={classes.buttonMenu}><a className={classes.link} href="#3">News</a></Button>
                     <Button className={classes.buttonMenu}><a className={classes.link} href="#4">Musik</a></Button>
                     <Button className={classes.buttonMenu}><a className={classes.link} href="#5">Settings</a></Button>
