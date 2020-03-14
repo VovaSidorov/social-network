@@ -21,8 +21,8 @@ function App(props) {
                                render={() => <PageProfile/>}/>
                         <Route path="/messages"
                                render={() => <DialogsContainer/>}/>
-                        <Route path="/users"
-                               render={() => <UsersContainer/>}/>
+                        <Route path='/users'
+                               render={ () => <UsersContainer /> }/>
                     </Grid>
                 </Grid>
             </Container>
