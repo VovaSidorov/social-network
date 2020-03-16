@@ -19,7 +19,7 @@ const PageProfile = (props) => {
     const classes = useStyles();
     return (
         <Paper className={classes.paper}>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
         </Paper>
     );

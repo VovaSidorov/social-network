@@ -1,13 +1,13 @@
  import React from 'react';
 import Header from "./../Header";
 import Navbar from "./../Navbar";
-import PageProfile from "./../PageProfile";
 import DialogsContainer from "../Dialog/DialogsContainer";
 import {Route} from "react-router-dom";
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
  import UsersContainer from "../Users/UsersContainer";
+ import ProfileContainer from "../PageProfile/ProfileContainer";
 
 function App(props) {
     return (
@@ -18,7 +18,7 @@ function App(props) {
                     <Navbar/>
                     <Grid item xs={9}>
                         <Route path="/profile"
-                               render={() => <PageProfile/>}/>
+                               render={() => <ProfileContainer/>}/>
                         <Route path="/messages"
                                render={() => <DialogsContainer/>}/>
                         <Route path='/users'

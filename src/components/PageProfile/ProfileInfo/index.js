@@ -2,6 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Avatar from '@material-ui/core/Avatar';
 import {makeStyles} from "@material-ui/core/styles";
+import Loader from "../../common/loader";
 
 const useStyles = makeStyles(theme => ({
     large: {
@@ -12,8 +13,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
     const classes = useStyles();
+
+    if (!props.profile){
+        return <Loader/>
+    }
     return (
         <React.Fragment>
             <Grid item xs={12}>
@@ -22,6 +27,7 @@ const ProfileInfo = () => {
                     alt="sdfdsfs"/>
             </Grid>
             <Grid item xs={12}>
+                <img src={props.profile.photos.large}/>
                 <Avatar alt="Remy Sharp" src="https://cdn0.iconfinder.com/data/icons/avatar-78/128/12-512.png"
                         className={classes.large}/>
             </Grid>
