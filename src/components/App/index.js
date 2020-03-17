@@ -17,7 +17,7 @@ function App(props) {
                 <Grid container spacing={3}>
                     <Navbar/>
                     <Grid item xs={9}>
-                        <Route path="/profile"
+                        <Route path="/profile/:userId?"
                                render={() => <ProfileContainer/>}/>
                         <Route path="/messages"
                                render={() => <DialogsContainer/>}/>
