@@ -8,12 +8,13 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
  import UsersContainer from "../Users/UsersContainer";
  import ProfileContainer from "../PageProfile/ProfileContainer";
+ import HeaderContainer from "../Header/HeaderContainer";
 
 function App(props) {
     return (
 
             <Container maxWidth="lg">
-                <Header/>
+                <HeaderContainer/>
                 <Grid container spacing={3}>
                     <Navbar/>
                     <Grid item xs={9}>

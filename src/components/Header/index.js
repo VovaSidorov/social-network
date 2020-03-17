@@ -4,13 +4,14 @@ import Toolbar from "@material-ui/core/Toolbar";
 import RedditIcon from "@material-ui/icons/Reddit";
 import Typography from "@material-ui/core/Typography";
 import {makeStyles} from "@material-ui/core/styles";
+import {NavLink} from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     icon: {
         marginRight: theme.spacing(2),
     }
 }));
-const Header = () => {
+const Header = (props) => {
     const classes = useStyles();
     return (
         <AppBar position="relative">
@@ -19,6 +20,10 @@ const Header = () => {
                 <Typography variant="h6" color="inherit" noWrap>
                     Social-network
                 </Typography>
+                <div>
+                    {props.isAuth ? props.login :
+                    <NavLink to={'/login'}>Login</NavLink>}
+                </div>
             </Toolbar>
         </AppBar>
     );
