@@ -9,6 +9,7 @@ import {
 import Users from "./Users";
 import Loader from "../common/loader";
 import {usersApi} from "../../api/api";
+import {withAuthRedirectComponent} from "../hoc/withAuthRedirect";
 
 
 class UsersContainer extends React.Component {
@@ -52,4 +53,4 @@ let mapStateToProps=(state)=>{
     }
 };
 
-export default connect(mapStateToProps,{follow,unfollow, setPage, toggleFollowingProgress, getUsers})(UsersContainer);
+export default withAuthRedirectComponent(connect(mapStateToProps,{follow,unfollow, setPage, toggleFollowingProgress, getUsers})(UsersContainer));
