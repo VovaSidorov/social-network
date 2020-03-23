@@ -22,7 +22,7 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
+                users: state.users.map( u =>  {
                     if (u.id === action.userId) {
                         return {...u, followed: true}
                     }
@@ -32,13 +32,13 @@ const usersReducer = (state = initialState, action) => {
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
+                users: state.users.map( u =>  {
                     if (u.id === action.userId) {
                         return {...u, followed: false}
                     }
                     return u;
                 })
-            };
+            }
         case SET_USERS: {
             return {...state, users: action.users}
         }
@@ -65,8 +65,8 @@ const usersReducer = (state = initialState, action) => {
 }
 
 
-export const followSuccess = (userId) => ({type: FOLLOW, userId});
-export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId});
+export const followSuccess = (userId) => ({type: FOLLOW, userId })
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId })
 export const setUsers = (users) => ({type: SET_USERS, users});
 export const setPage = (page) => ({type: SET_CURRENT_PAGE, newPage: page});
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount});
@@ -100,7 +100,6 @@ export const follow = (userId) => {
             });
     }
 }
-
 export const unfollow = (userId) => {
     return (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId));
