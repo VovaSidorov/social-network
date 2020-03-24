@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
                 {/*<img src={props.profile.photos.large}/>*/}
                 <Avatar alt="Remy Sharp" src={props.profile.photos.large}
                         className={classes.large}/>
-                        <ProfileStatus status={"Hello my Friends"}/>
+                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             </Grid>
         </React.Fragment>
     );
