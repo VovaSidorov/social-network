@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
+import {Field, reduxForm} from "redux-form";
 
 const useStyles = makeStyles(theme => ({
     large: {
@@ -17,33 +18,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const MyPosts = (props) => {
-
-    const classes = useStyles();
-
+    console.log(props);
     let postsElements =
         props.posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>);
 
-    let newPostElement = React.createRef();
+    let addNewPost=(values)=>{
+        props.addPost(values.newPostBody)
+    }
 
-    let onAddPost = () => {
-        props.addPost();
-    };
-    let onPostChange = () => {
-        let text = newPostElement.current.value;
-        props.updateNewPostText(text);
-    };
     return (
         <React.Fragment>
             <Grid item xs={12}>
-                <form noValidate autoComplete="off">
-                    {/* <TextField onChange={onPostChange} ref={newPostElement} id="outlined-basic" label="2" variant="1" 
-                     className={classes.textField} defaultValue={props.newPostText}/> */}
-                    <textarea onChange={onPostChange} className={classes.textField} ref={newPostElement}
-                              value={props.newPostText} />
-                    <Button  onClick={ onAddPost } variant="contained" color="primary"  className={classes.textField}>
-                        Add post
-                    </Button>
-                </form>
+                   <AddPostFormRedux onSubmit={addNewPost}/>
             </Grid>
             <Grid item xs={12} >
                 {postsElements}
@@ -51,5 +37,21 @@ const MyPosts = (props) => {
         </React.Fragment>
     )
 }
+
+const FormPost=(props)=>{
+    const classes = useStyles();
+
+    return(
+        <form noValidate autoComplete="off" onSubmit={props.handleSubmit}>
+                    <Field component={'textarea'} name={'newPostBody'} placeholder={'Enter new post'} />
+            {/*<Button  onClick={ onAddPost } variant="contained" color="primary"  className={classes.textField}>*/}
+            {/*    Add post*/}
+            {/*</Button>*/}
+            <button>New post</button>
+        </form>
+    )
+}
+
+const AddPostFormRedux = reduxForm({form:"postAddPostForm"})(FormPost);
 
 export default MyPosts;

@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -17,9 +18,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-
 const Dialog = (props) => {
-  
+
     const classes = useStyles();
 
     let state = props.dialogsPage;
@@ -29,16 +29,12 @@ const Dialog = (props) => {
 
     let messageElements = state.messages
         .map(message => <MessageItem message={message.message} key={message.id}/>);
-    let newMessageBody = state.newMessageBody;
 
-    let onSendMessageClick=()=>{
-        props.sendMessage()
-    };
-    let onNewMessageChange=(e)=>{
-        let body = e.target.value;
-        props.updateNewMessageBody(body);
-    };
-   if (!props.isAuth) return <Redirect to={"/login"}/>;
+    let addNewMessage=(values)=>{
+        props.sendMessage(values.newMessageBody)
+    }
+
+    if (!props.isAuth) return <Redirect to={"/login"}/>;
     return (
         <Paper className={classes.paper}>
             <Grid container spacing={3}>
@@ -47,17 +43,22 @@ const Dialog = (props) => {
                 </Grid>
                 <Grid item xs={6}>
                     <div>{messageElements}</div>
-                    <textarea  onChange={onNewMessageChange} 
-                    value={newMessageBody}
-                    className={classes.textField}></textarea>
-                    <Button onClick={onSendMessageClick} variant="contained" color="primary"  className={classes.textField}>
-                        New message
-                    </Button>
+                    <AddMessageFormRedux onSubmit={addNewMessage}/>
                 </Grid>
             </Grid>
         </Paper>
     )
-
 };
+
+const MessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field component={'textarea'} name={'newMessageBody'} placeholder={'Enter new message'}/>
+            <button>New message</button>
+        </form>
+    )
+}
+
+const AddMessageFormRedux = reduxForm({form:"dialogAddMessageForm"})(MessageForm);
 
 export default Dialog;
