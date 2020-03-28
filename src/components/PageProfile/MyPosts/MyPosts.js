@@ -5,6 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import {makeStyles} from "@material-ui/core/styles";
 import {Field, reduxForm} from "redux-form";
+import {requireField,maxLengthCreator} from "../../../utils/validators/validators";
+import {Textarea} from "../../common/FormControls/FormsControls";
 
 const useStyles = makeStyles(theme => ({
     large: {
@@ -16,6 +18,8 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(2),
     },
 }));
+
+const maxLength10 = maxLengthCreator(10)
 
 const MyPosts = (props) => {
     console.log(props);
@@ -43,7 +47,7 @@ const FormPost=(props)=>{
 
     return(
         <form noValidate autoComplete="off" onSubmit={props.handleSubmit}>
-                    <Field component={'textarea'} name={'newPostBody'} placeholder={'Enter new post'} />
+                    <Field component={Textarea} name={'newPostBody'} placeholder={'Enter new post'} validate={[requireField, maxLength10]}/>
             {/*<Button  onClick={ onAddPost } variant="contained" color="primary"  className={classes.textField}>*/}
             {/*    Add post*/}
             {/*</Button>*/}

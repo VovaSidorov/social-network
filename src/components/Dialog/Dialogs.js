@@ -7,6 +7,8 @@ import {makeStyles} from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../common/FormControls/FormsControls";
+import {maxLengthCreator, requireField} from "../../utils/validators/validators";
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -50,10 +52,12 @@ const Dialog = (props) => {
     )
 };
 
+const maxLength30 = maxLengthCreator(30)
+
 const MessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field component={'textarea'} name={'newMessageBody'} placeholder={'Enter new message'}/>
+            <Field component={Textarea} name={'newMessageBody'} placeholder={'Enter new message'} validate={[requireField, maxLength30]}/>
             <button>New message</button>
         </form>
     )
