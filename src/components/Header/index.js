@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
 }));
 const Header = (props) => {
     const classes = useStyles();
+    const logout = ()=>{
+        props.logout()
+    }
     return (
         <AppBar position="relative">
             <Toolbar>
@@ -21,7 +24,7 @@ const Header = (props) => {
                     Social-network
                 </Typography>
                 <div>
-                    {props.isAuth ? props.login :
+                    {props.isAuth ? <div>{props.login}<button onClick={logout}>Logout</button></div> :
                     <NavLink to={'/login'}>Login</NavLink>}
                 </div>
             </Toolbar>
