@@ -5,7 +5,7 @@ import {getStatus, getUserProfile, updateStatus} from "../../redux/profileReduce
 import {Redirect, withRouter} from "react-router-dom";
 import {withAuthRedirectComponent} from "../hoc/withAuthRedirect";
 import {compose} from "redux";
-import Dialog from "../Dialog/Dialogs";
+
 
 
 class ProfileContainer extends React.Component {
@@ -13,6 +13,9 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.autorizedUserId;
+            if (!userId){
+                this.props.history.push('/login');
+            }
         }
         this.props.getUserProfile(userId);
         // setTimeout(()=>{
