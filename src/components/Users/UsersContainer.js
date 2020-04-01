@@ -14,8 +14,7 @@ import {compose} from "redux";
 import {
     getCurrentPageSelector, getFollowingInProgressSelector, getIsFetchingSelector,
     getPageSizeSelector,
-    getTotalUsersCountSelector,
-    getUsersSelector
+    getTotalUsersCountSelector, getUsersSelector,
 } from "../../redux/usersSelectors";
 
 
