@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Avatar from '@material-ui/core/Avatar';
 import {makeStyles} from "@material-ui/core/styles";
 import Loader from "../../common/loader";
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWothHooks";
 
 const useStyles = makeStyles(theme => ({
     large: {
@@ -31,7 +31,7 @@ const ProfileInfo = (props) => {
                 {/*<img src={props.profile.photos.large}/>*/}
                 <Avatar alt="Remy Sharp" src={props.profile.photos.large}
                         className={classes.large}/>
-                        <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
             </Grid>
         </React.Fragment>
     );
