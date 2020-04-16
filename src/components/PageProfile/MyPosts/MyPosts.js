@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import Post from '../Post';
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -21,26 +21,27 @@ const useStyles = makeStyles(theme => ({
 
 const maxLength10 = maxLengthCreator(10)
 
-const MyPosts = (props) => {
-    console.log(props);
+const MyPosts = React.memo(props=>{
+    console.log("TO");
     let postsElements =
-        props.posts.map( p => <Post message={p.message} likesCount={p.likesCount}/>);
+            props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>);
 
-    let addNewPost=(values)=>{
-        props.addPost(values.newPostBody)
-    }
+        let addNewPost = (values) => {
+            props.addPost(values.newPostBody)
+        }
 
-    return (
-        <React.Fragment>
-            <Grid item xs={12}>
-                   <AddPostFormRedux onSubmit={addNewPost}/>
-            </Grid>
-            <Grid item xs={12} >
-                {postsElements}
-            </Grid>
-        </React.Fragment>
-    )
-}
+        return (
+            <React.Fragment>
+                <Grid item xs={12}>
+                    <AddPostFormRedux onSubmit={addNewPost}/>
+                </Grid>
+                <Grid item xs={12}>
+                    {postsElements}
+                </Grid>
+            </React.Fragment>
+        )
+});
+
 
 const FormPost=(props)=>{
     const classes = useStyles();
