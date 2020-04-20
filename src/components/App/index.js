@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Header from "./../Header";
 import Navbar from "./../Navbar";
 import DialogsContainer from "../Dialog/DialogsContainer";
 import {Route, withRouter} from "react-router-dom";
@@ -14,7 +13,6 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "../../redux/appReducer";
 import Loader from "../common/loader";
-
 
 class App extends Component {
     componentDidMount() {

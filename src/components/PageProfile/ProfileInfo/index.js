@@ -14,10 +14,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const ProfileInfo = (props) => {
+const ProfileInfo = ({profile,status,updateStatus}) => {
     const classes = useStyles();
 
-    if (!props.profile){
+    if (!profile){
         return <Loader/>
     }
     return (
@@ -29,9 +29,9 @@ const ProfileInfo = (props) => {
             </Grid>
             <Grid item xs={12}>
                 {/*<img src={props.profile.photos.large}/>*/}
-                <Avatar alt="Remy Sharp" src={props.profile.photos.large}
+                <Avatar alt="Remy Sharp" src={profile.photos.large}
                         className={classes.large}/>
-                        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                        <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </Grid>
         </React.Fragment>
     );
