@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from "./../Navbar";
 import DialogsContainer from "../Dialog/DialogsContainer";
-import {Route, withRouter} from "react-router-dom";
+import {BrowserRouter, Route, withRouter} from "react-router-dom";
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -9,10 +9,11 @@ import UsersContainer from "../Users/UsersContainer";
 import ProfileContainer from "../PageProfile/ProfileContainer";
 import HeaderContainer from "../Header/HeaderContainer";
 import Login from "../Login/login";
-import {connect} from "react-redux";
+import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "../../redux/appReducer";
 import Loader from "../common/loader";
+import store from "../../redux/redux-store";
 
 class App extends Component {
     componentDidMount() {
@@ -50,6 +51,16 @@ const mapStateToProps = (state) => ({
 })
 
 
-export default compose(
+let AppContainer = compose(
     withRouter,
     connect(mapStateToProps, {initializeApp}))(App);
+
+const MainJSApp = (props)=>{
+    return <BrowserRouter>
+        <Provider store={store}>
+            <AppContainer/>
+        </Provider>
+    </BrowserRouter>
+}
+
+export default MainJSApp;
