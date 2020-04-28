@@ -4,6 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import {makeStyles} from "@material-ui/core/styles";
 import Loader from "../../common/loader";
 import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWothHooks";
+import userPhoto from '../../../essets/images/user.png'
 
 const useStyles = makeStyles(theme => ({
     large: {
@@ -14,11 +15,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const ProfileInfo = ({profile,status,updateStatus}) => {
+const ProfileInfo = ({profile, status, updateStatus, isOwner,savePhoto}) => {
     const classes = useStyles();
 
-    if (!profile){
+    if (!profile) {
         return <Loader/>
+    }
+
+    const onMainFotoSelected = (e)=>{
+        if (e.target.files.length){
+            savePhoto(e.target.files[0]);
+        }
     }
     return (
         <React.Fragment>
@@ -29,9 +36,10 @@ const ProfileInfo = ({profile,status,updateStatus}) => {
             </Grid>
             <Grid item xs={12}>
                 {/*<img src={props.profile.photos.large}/>*/}
-                <Avatar alt="Remy Sharp" src={profile.photos.large}
+                <Avatar alt="Remy Sharp" src={profile.photos.large || userPhoto}
                         className={classes.large}/>
-                        <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
+                {isOwner && <input type={'file'} onChange={onMainFotoSelected}/>}
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </Grid>
         </React.Fragment>
     );
